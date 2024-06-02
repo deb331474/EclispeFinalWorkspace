@@ -1,0 +1,17 @@
+package com.debasish.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.debasish.bean.StudentBean;
+
+@RestController
+public class Studentcontroller {
+	
+	public StudentBean getStudent() {
+		
+		StudentBean studentBean=new StudentBean(1, "Debasish", "Pruseth");
+		return studentBean;
+		
+	}
+
+}

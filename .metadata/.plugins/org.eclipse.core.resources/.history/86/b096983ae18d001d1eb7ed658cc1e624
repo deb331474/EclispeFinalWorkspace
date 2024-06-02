@@ -1,0 +1,26 @@
+package com.dataTypes;
+
+public class ParameterizedCons {
+	
+	private String name;
+	
+	public ParameterizedCons(String n) {
+		System.out.println("Parameterized Constructor");
+		this.name=n;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public static void main(String[] args) {
+		
+		ParameterizedCons parametrizedCons = new ParameterizedCons("Debasish");
+		System.out.println(parametrizedCons.getName());
+		
+
+	}
+
+}

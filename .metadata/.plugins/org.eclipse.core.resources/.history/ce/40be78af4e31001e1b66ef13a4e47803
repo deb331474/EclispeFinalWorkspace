@@ -1,0 +1,57 @@
+package in.debasish.shopCPR;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ShopCPR {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		WebDriver driver = new ChromeDriver();
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+		driver.get("https://preprod-intelligostore.laerdalblr.in/portfolios/all-products");
+		driver.manage().window().maximize();
+		
+		String TotalText = driver.findElement(By.xpath("(//p[@class='toolbar-amount aha-show-result mb-0'])[1]")).getText();
+		
+		System.out.println(TotalText);
+		
+		
+		  int lastSpaceIndex=TotalText.lastIndexOf(" "); 
+		  int totalPages=Integer.parseInt(TotalText.substring(lastSpaceIndex+1));
+		 
+		 
+		//int totalPages=Integer.parseInt(TotalText.substring(TotalText.lastIndexOf("f")+1));
+		System.out.println(totalPages);
+		
+		
+		
+		int allpages=driver.findElements(By.xpath("//ul[@class='items pages-items pagination']//li//a")).size();
+		
+		System.out.println(allpages);
+		
+		
+		for(int i=1;i<=allpages;i++) {
+			
+			if(allpages>1) {
+				WebElement active_products_page = driver.findElement(By.xpath("(//ul[@class='items pages-items pagination'])[1]"));
+				System.out.println(" Active Page : " + active_products_page.getText());
+				JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+				jsExecutor.executeScript("arguments[0].scrollIntoView();", active_products_page);
+			}
+		}
+		
+		driver.close();
+		
+
+	}
+
+}

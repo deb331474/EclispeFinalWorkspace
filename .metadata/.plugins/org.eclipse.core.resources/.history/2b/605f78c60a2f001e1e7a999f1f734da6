@@ -1,0 +1,46 @@
+package in.debasish.datepicker;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class DatePickerV2 {
+
+	public static void main(String[] args) {
+		
+        WebDriver driver=new ChromeDriver();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		driver.manage().window().maximize();
+
+		driver.findElement(By.xpath("//input[@placeholder='Username']")).sendKeys("Admin");
+		driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("admin123");
+		
+		driver.findElement(By.xpath("//button[@class='orangehrm-login-button' or @type='submit']")).click();
+		
+		driver.findElement(By.xpath("//span[normalize-space()='Performance']")).click();
+		
+	    driver.findElement(By.xpath("//input[@class='oxd-input oxd-input--active' and @placeholder='yyyy-mm-dd']")).click();
+		
+		String year="2008";
+		String month="November";
+		String date="23";
+		
+		while(true) {
+			String mon=driver.findElement(By.xpath("//ul[@class='oxd-calendar-dropdown']//li")).getText();
+			String yr=driver.findElement(By.xpath("//li[@class='--active oxd-calendar-selector-year']//li")).getText();
+		
+		if(mon.equals(month) && yr.equals(year)) {
+			break;
+		}
+		}
+		
+		
+	}
+
+}

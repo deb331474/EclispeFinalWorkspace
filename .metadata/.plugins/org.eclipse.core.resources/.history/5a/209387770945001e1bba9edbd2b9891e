@@ -1,0 +1,87 @@
+package in.debasish.shopCPR;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import java.time.*;
+
+import static java.time.Duration.ofSeconds;
+
+public class ShopCPR {
+	
+	WebDriver driver;
+	
+	
+	@BeforeClass
+	void setUp() {
+		
+		driver = new ChromeDriver();
+
+		driver.manage().timeouts().implicitlyWait(ofSeconds(20));
+
+		driver.get("https://shopcpr-preprod.laerdalblr.in/all-products");
+
+		driver.manage().timeouts().pageLoadTimeout(ofSeconds(20));
+
+		driver.manage().window().maximize();
+
+		
+	}
+	@Test(priority = 1)
+	 void getTotalPages() throws InterruptedException {
+		
+		    // Find the element that contains the information about total results
+		    WebElement totalResultsElement = driver.findElement(By.xpath("(//p[@role='alert'])[1]"));
+
+		    // Extract the total results text
+		    String totalResultsText = totalResultsElement.getText();
+
+		    // Extract the numeric part from the text (e.g., "Showing Results 1-10 of 268" => 268)
+		    int totalResults = Integer.parseInt(totalResultsText.split("of")[1].trim());
+
+		    // Find the pagination dropdown (replace with your actual locator)
+		    WebElement paginationDropdown = driver.findElement(By.xpath("(//div[@class='control ']/select)[1]"));
+
+		    // Find the items per page dropdown (replace with your actual locator)
+		    WebElement itemsPerPageDropdown = driver.findElement(By.xpath("(//div[@class='control ']/select)[1]/option"));
+
+		    // Calculate the total pages based on total results and items per page
+		    int itemsPerPage = Integer.parseInt(itemsPerPageDropdown.getAttribute("value"));
+		    int total_pages = (int) Math.ceil((double) totalResults / itemsPerPage);
+		    
+			System.out.println(total_pages);
+
+
+			
+			for(int i=1;i<=total_pages;i++) {
+
+
+
+				//List<WebElement> allProducts= driver.findElements(By.xpath("//div[@data-container='product-list']//h3"));
+
+				//WebElement nextButton=driver.findElement(By.xpath("(//a[@aria-label='Next page'])[1]/span"));
+				WebElement CurrentPage= driver.findElement(By.xpath("(//li[contains(@class,'current')])[1]"));
+				System.out.println(CurrentPage.getText());
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//li[contains(@class,'page-item')]/a/span[text()='"+(i+1)+"'])[1]"))).click();
+			    Thread.sleep(5000);
+				
+			}
+
+		}
+
+
+	@AfterClass
+	void tearDown()
+	{
+		driver.quit();
+	}
+
+}

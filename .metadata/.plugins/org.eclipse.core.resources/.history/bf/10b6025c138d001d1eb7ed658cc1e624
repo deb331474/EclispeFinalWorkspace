@@ -1,0 +1,15 @@
+package com.dataTypes;
+
+public class BeaCompiler {
+
+	public static void main(String[] args) {
+		
+		int a=20,b=10,c=0;
+		
+		a=b+++c;
+		
+		System.out.println(a);
+
+	}
+
+}

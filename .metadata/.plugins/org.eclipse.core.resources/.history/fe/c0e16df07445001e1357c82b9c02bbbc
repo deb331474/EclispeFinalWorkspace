@@ -1,0 +1,40 @@
+package testCases;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import PageObject.HomePage;
+import PageObject.LogInPage;
+import testBase.BaseClass;
+
+public class TC_002_LogInTest extends BaseClass{
+	
+	@Test
+	public void LoginTest() throws InterruptedException {
+		
+		HomePage hp=new HomePage(driver);
+		hp.clickMyAccount();
+		
+		hp.Loginlink();
+		
+		LogInPage lp=new LogInPage(driver);
+		
+		Thread.sleep(5000);
+		
+		lp.setEmail("deb456@gmail.com");
+		lp.setPassword("Test@123");
+		
+		lp.clickLogin();
+		
+		String myAccount=lp.getConfirmationMsg();
+		myAccount.trim();
+		
+		Assert.assertEquals(myAccount, "My Account");
+		
+		
+		
+		
+	}
+	
+
+}

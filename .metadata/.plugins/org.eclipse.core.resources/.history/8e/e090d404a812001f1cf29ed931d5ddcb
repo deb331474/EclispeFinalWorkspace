@@ -1,0 +1,69 @@
+package PageObject;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class GenericProductDisplayPage extends BasePage {
+
+    public GenericProductDisplayPage(WebDriver driver) {
+        super(driver);
+    }
+
+    @FindBy(css = "img[alt='iMac']")
+    WebElement productImg;
+
+    @FindBy(xpath = "(//img[@title='iMac'])[1]")
+    WebElement productStImg;
+
+    @FindBy(css  = ".mfp-arrow-left")
+    WebElement previousImgBtn;
+
+    @FindBy(css = ".mfp-arrow-right")
+    WebElement nextImgBtn;
+
+    @FindBy(css = "button[title='Close (Esc)']")
+    WebElement closeBtn;
+
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    public void clickWithKeyboard(WebElement element) {
+        element.sendKeys(Keys.ENTER);
+    }
+
+    public void clickWithJavaScript(WebElement element) {
+        js.executeScript("arguments[0].click();", element);
+    }
+
+    public void clickonProductImageLink() {
+    	waitforElementToBeVisible(productImg);
+       clickWithJavaScript(productImg);
+        
+    }
+
+    public void clickonProductStaticImage() {
+        clickWithJavaScript(productStImg);
+    }
+
+    public void clickonPreviousImgBtn() throws InterruptedException {
+    	for(int i=0;i<3;i++) {
+        waitforElementToBeVisible(previousImgBtn);
+        clickWithKeyboard(previousImgBtn);
+        Thread.sleep(5000);
+    	}
+    }
+
+    public void clickonNextImgBtn() throws InterruptedException {
+    	for(int i=0;i<3;i++) {
+        waitforElementToBeVisible(nextImgBtn);
+        clickWithKeyboard(nextImgBtn);
+        Thread.sleep(5000);
+    }
+    }
+
+    public void clickOnCloseImgBtn() {
+        waitforElementToBeVisible(closeBtn);
+        clickWithJavaScript(closeBtn);
+    }
+}

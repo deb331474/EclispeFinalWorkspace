@@ -1,0 +1,52 @@
+package PageObject;
+
+import org.apache.commons.collections4.functors.CatchAndRethrowClosure;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class LogInPage extends BasePage {
+	
+	public LogInPage(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+
+	@FindBy(id = "input-email")
+	WebElement emailAddress;
+	
+	
+	@FindBy(id = "input-password")
+	WebElement pswd;
+	
+	
+	@FindBy(xpath = "//button[@type='submit']")
+	WebElement Login;
+	
+	
+	@FindBy(xpath = "//h2[text()='My Account']")
+	WebElement loginCnfrmation;
+	
+
+	public void setEmail(String email) {
+		emailAddress.sendKeys(email);
+	}
+
+	public void setPassword(String pwd) {
+		pswd.sendKeys(pwd);
+	}
+
+	public void clickLogin() {
+		Login.click();
+	}
+	
+	public String getConfirmationMsg() {
+		try {
+			return (loginCnfrmation.getText());
+		}
+		catch (Exception e) {
+			return(e.getMessage());
+		}
+	
+
+}

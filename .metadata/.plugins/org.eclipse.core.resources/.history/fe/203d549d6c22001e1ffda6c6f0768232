@@ -1,0 +1,5 @@
+package in.debasish.Hibernate;
+
+public class Users {
+
+}

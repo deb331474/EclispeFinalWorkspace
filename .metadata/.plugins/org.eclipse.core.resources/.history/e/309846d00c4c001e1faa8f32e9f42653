@@ -1,0 +1,19 @@
+package PageObject;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class AddtoCart extends BasePage{
+
+	public AddtoCart(WebDriver driver) {
+		super(driver);
+		
+	}
+	
+	@FindBy(xpath = "(//input[@name='option[218]'])[1]")
+	WebElement radioButton1;
+	
+	
+
+}

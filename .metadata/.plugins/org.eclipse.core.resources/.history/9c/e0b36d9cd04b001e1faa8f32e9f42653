@@ -1,0 +1,62 @@
+package PageObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+
+public class MonitorDetailsPage extends BasePage{
+
+	public MonitorDetailsPage(WebDriver driver) {
+		super(driver);
+		
+	}
+	
+	
+	@FindBy(xpath="(//a[normalize-space()='Components'])[1]")
+	 WebElement Comp;
+	 
+	@FindBy(xpath =("//a[normalize-space()='Monitors (2)']"))
+	 WebElement moni;
+	 
+	@FindBy(xpath = "//div[@class='product-thumb']")
+	List<WebElement> allMonProducts;
+	
+	@FindBy(xpath = "//a[normalize-space()='Apple Cinema 30\"']")
+	WebElement appleMonitor;
+	
+	
+	Actions act= new Actions(driver);
+	
+	public void clickonMonitorDetsils() {
+		act.moveToElement(Comp).moveToElement(moni).click().perform();
+		
+	}
+	
+	public void clickonAppleMonitorDetsils() {
+		appleMonitor.click();
+		
+	}
+	
+	public String getMonitorText() {
+		return appleMonitor.getText();
+	}
+	
+  public List<String> allMonitorDetails() {
+	  
+	  List<String> allMonitorList=new ArrayList<String>();
+	  for(WebElement ws:allMonProducts) {
+		  String monitorDetailsText=ws.getText();
+		  if(monitorDetailsText.equals("Apple Cinema 30\"")){
+			 clickonAppleMonitorDetsils();
+		  }
+		  
+	  }
+	  return allMonitorList;
+	
+}
+
+}

@@ -1,0 +1,40 @@
+package in.debasish.datepicker;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class DatePicker {
+
+	public static void main(String[] args) {
+		
+        //WebDriverManager.chromedriver().setup();
+		
+		WebDriver driver=new ChromeDriver();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		
+		driver.get("https://jqueryui.com/datepicker/");
+		driver.manage().window().maximize();
+		
+		driver.switchTo().frame(0);
+		
+		//driver.findElement(By.xpath("//input[@id='datepicker']")).sendKeys("08/20/2023");
+		
+		String year="2024";
+		String month="October";
+		String date="12";
+		
+		driver.findElement(By.xpath("//input[@id='datepicker']")).click();
+		
+		
+		
+		
+		
+
+	}
+
+}

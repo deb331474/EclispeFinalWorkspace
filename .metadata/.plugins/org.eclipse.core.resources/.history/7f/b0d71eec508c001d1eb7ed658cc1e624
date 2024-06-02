@@ -1,0 +1,13 @@
+package com.dataTypes;
+
+public class Float {
+
+	public static void main(String[] args) {
+		
+		float a=9.876;
+		
+		System.out.println(a);
+
+	}
+
+}

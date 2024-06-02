@@ -1,0 +1,49 @@
+package PageObject;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class SearchPage extends BasePage{
+
+	public SearchPage(WebDriver driver) {
+		super(driver);
+
+	}
+	
+	@FindBy(css = ".input-lg")
+	WebElement searchEditField;
+	
+	@FindBy(css = ".fa-search")
+	WebElement searchBtn;
+	
+	
+	//@FindBy(css = "div[class='caption'] h4 a")
+	@FindBy(css = ".col-sm-4 h1")
+	WebElement productName;
+	
+	@FindBy(css = "p:nth-child(2)")
+	WebElement errorMsg;
+
+	JavascriptExecutor js=(JavascriptExecutor)driver;
+	
+	public void clickonsearchEditField(String pName) {
+		searchEditField.sendKeys(pName);
+	}
+	
+	public void clickonsearchBtn() {
+		js.executeScript("arguments[0].click();", searchBtn);
+		searchEditField.click();
+	}
+	
+	public String getActualProductName() {
+		return productName.getText();
+	}
+	
+	public String getErrorMsg() {
+		waitforElementToBeVisible(errorMsg);
+		return errorMsg.getText();
+	}
+	
+}

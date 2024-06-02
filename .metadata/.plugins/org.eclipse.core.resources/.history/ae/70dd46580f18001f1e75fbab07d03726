@@ -1,0 +1,42 @@
+package PageObject;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class ApplePriceComparePage extends BasePage{
+
+	public ApplePriceComparePage(WebDriver driver) {
+		super(driver);
+
+	}
+	
+	@FindBy(xpath = "//span[normalize-space()='$122.00']")
+	WebElement strPrice;
+	
+	@FindBy(xpath = "(//h2[normalize-space()='$110.00'])[1]")
+	WebElement disPrice;
+	
+	String discntPrice;
+	
+	String regularPrice;
+	
+	public String getDiscountPrice() {
+		waitforElementToBeVisible(disPrice);
+		discntPrice=disPrice.getText().replace("$", "");
+		return discntPrice;
+	}
+	
+	public String getregularPrice() {
+		waitforElementToBeVisible(strPrice);
+		regularPrice=strPrice.getText().replace("$", "");
+		return regularPrice;
+	}
+	
+	public int getDiscountAmount(String regularPrice,String discntPrice) {
+		
+		int discntAmount=(int)Integer.parseInt(regularPrice)-Integer.parseInt(discntPrice);
+		return discntAmount;
+	}
+
+}

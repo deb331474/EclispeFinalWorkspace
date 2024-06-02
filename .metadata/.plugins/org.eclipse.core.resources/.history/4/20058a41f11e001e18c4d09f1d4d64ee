@@ -1,0 +1,79 @@
+package in.debasish;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FirstTestCase {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://www.amazon.in/");
+		
+		driver.manage().window().maximize();
+		
+		Thread.sleep(3000);
+		
+		WebElement signInLink = driver.findElement(By.id("nav-link-accountList"));
+		
+		signInLink.click();
+		
+		WebElement signInputField = driver.findElement(By.xpath("//*[@id=\"ap_email\"]"));
+		
+		signInputField.sendKeys("prusethdebasish@gmail.com");
+		
+		WebElement clickOnContinuebutton = driver.findElement(By.xpath("//*[@id=\"continue\"]"));
+		
+		clickOnContinuebutton.click();
+		
+        WebElement passwordField = driver.findElement(By.xpath("//*[@id=\"ap_password\"]"));
+		
+		passwordField.sendKeys("debudon@211");
+		
+		WebElement signInButton = driver.findElement(By.xpath("//*[@id=\"signInSubmit\"]"));
+		
+		signInButton.click();
+		
+		Thread.sleep(6000);
+		
+		/*
+		 * WebElement clickOnLink =
+		 * driver.findElement(By.xpath("//*[@id=\"browsingHistoryLabel\"]/span"));
+		 * 
+		 * clickOnLink.click();
+		 */
+		
+		//To verify the page title
+		
+		/*
+		 * String actualTitle = driver.getTitle();
+		 * 
+		 * String givenTitle = "Online Shopping site in India:";
+		 * 
+		 * if(actualTitle==givenTitle) { System.out.println("Page title is correct"); }
+		 * else { System.out.println("Page title is not correct"); }
+		 */
+		
+		//Label Validation after login--------
+		
+		
+		WebElement act_label_text = driver.findElement(By.xpath("//*[@id=\"CardInstanceQMYeEfwpauytL_rFmlloiA\"]/div[1]/h2/span/span[2]"));
+		
+		String act_label = act_label_text.getText();
+		
+		String exp_label = "Pick up where you left off";
+		
+		if(act_label==exp_label) {
+			System.out.println("Login Successful");
+		}
+		else {
+			System.out.println("Login Failed");
+		}
+
+	}
+
+}

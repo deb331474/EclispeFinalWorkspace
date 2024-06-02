@@ -1,0 +1,53 @@
+package testCases;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import PageObject.GenericProductDisplayPage;
+import PageObject.HomePage;
+import PageObject.LogInPage;
+import PageObject.MyWishListPage;
+import PageObject.SearchPage;
+import testBase.BaseClass;
+
+public class TC_ATC_002 extends BaseClass{
+	
+	
+	@Test
+	public void wishListHeaderTest() {
+		
+		LogInPage lp = new LogInPage(driver);
+		logger.debug("application logs");
+		logger.info("Starting Test case 002");
+		HomePage hp = new HomePage(driver);
+		hp.clickMyAccount();
+		hp.Loginlink();
+		lp.setEmail("prusethdebasish@gmail.com");
+		lp.setPassword("debudon@211");
+		lp.clickLogin();
+
+		String myAccount = lp.getConfirmationMsg();
+		myAccount.trim();
+
+		Assert.assertEquals(myAccount, "My Account");
+		
+		SearchPage sp=new SearchPage(driver);
+		sp.clickonsearchEditField("iMac");
+		sp.clickonsearchBtn();
+		String expected=sp.getActualProductName().split("-")[1];
+		String proName=expected.trim();
+		Assert.assertEquals("iMac", proName);
+		
+		
+		GenericProductDisplayPage gdp=new GenericProductDisplayPage(driver);
+		gdp.clickOnParticularProductImg("iMac");
+		
+		MyWishListPage mwp=new MyWishListPage(driver);
+		mwp.addtoWishList();
+		Assert.assertEquals(mwp.getWishListSuccessMSG(),"You must login or create an account to save iMac to your wish list!");
+		mwp.clickonWishListHeaderMenu();
+		Assert.assertEquals(mwp.getWishListProdName(), "iMac");
+		mwp.clickonContinueBtn();
+	}
+
+}

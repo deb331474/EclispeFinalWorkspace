@@ -1,0 +1,43 @@
+package com.dataTypes;
+
+public class GetterSetter {
+	
+	private String name;
+	private int id;
+	
+	public GetterSetter(String name, int id) {
+		super();
+		this.name = name;
+		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		if(name!=null && name.length()>2)
+		this.name = name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	@Override
+	public String toString() {
+		return "GetterSetter [name=" + name + ", id=" + id + "]";
+	}
+
+	public static void main(String[] args) {
+		GetterSetter gs = new GetterSetter("Rupesh",78);
+		System.out.println(gs);
+		
+
+	}
+
+}

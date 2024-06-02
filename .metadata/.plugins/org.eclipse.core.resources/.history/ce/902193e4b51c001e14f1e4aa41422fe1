@@ -1,0 +1,9 @@
+package in.debasish.Hibernate;
+
+public class Alien {
+	
+	private int aid;
+	private String aname;
+	
+
+}

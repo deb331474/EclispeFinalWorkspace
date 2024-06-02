@@ -1,0 +1,20 @@
+package com.dataTypes;
+
+public class Boolean {
+
+	public static void main(String[] args) {
+		
+		boolean a=false;
+		boolean b=true;
+		
+		if (a==false) {
+			System.out.println("Hello hi");
+		}
+		
+		if (b==false) {
+			System.out.println("Hello bye");
+		}
+
+	}
+
+}

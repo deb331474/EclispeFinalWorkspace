@@ -1,0 +1,28 @@
+package PageObject;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class GenericProductDisplayPage extends BasePage {
+
+    public GenericProductDisplayPage(WebDriver driver) {
+        super(driver);
+    }
+
+    
+
+
+    public void clickOnParticularProductImg(String prodName) {
+    	
+    	
+        WebElement productImg=driver.findElement(By.cssSelector("//img[contains(@alt,'"+prodName+"')]"));
+        
+        waitforElementToBeVisible(productImg);
+        
+        productImg.click();
+    }
+}

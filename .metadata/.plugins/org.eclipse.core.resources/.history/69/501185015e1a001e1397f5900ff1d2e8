@@ -1,0 +1,14 @@
+# H2 Database Configuration
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.username=sa
+spring.datasource.password=
+spring.datasource.driver-class-name=org.h2.Driver
+
+# H2 Console Configuration (optional but useful for development)
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+# JPA and Hibernate Configuration
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect

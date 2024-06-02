@@ -1,0 +1,24 @@
+package com.debasish;
+
+public class MethodReference {
+
+interface Printing(){
+	void print();
+}
+
+public static class Example1{
+	public static void printAnything() {
+		System.out.println("Print anything to know about the method refrence in java 8");
+	}
+}
+
+
+
+
+	public static void main(String[] args) {
+		Printing printer = MethodReference1::printAnything;
+		printer.print();
+
+	}
+
+}

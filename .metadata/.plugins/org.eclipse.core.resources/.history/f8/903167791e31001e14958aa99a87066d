@@ -1,0 +1,25 @@
+package in.debasish.StringOperation;
+
+public class StringOperations {
+
+	public static void main(String[] args) {
+		
+		//Substring--Returns a substring from specified index to the end of the string
+		
+		String str="Debasish Kumar pruseth";
+		
+		String substr=str.substring(7);
+		
+		System.out.println(substr);
+		
+		String substr1=str.substring(1, 10);
+		
+		System.out.println(substr1);
+		
+		String substr2=(String) str.subSequence(2,8);
+		
+		System.out.println(substr2);
+
+	}
+
+}

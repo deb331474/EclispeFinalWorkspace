@@ -1,0 +1,17 @@
+package com.debasish;
+
+
+public interface Foo() {
+	public default String HelloWorld() {
+		return "Hello World";
+	}
+}
+
+public class FuntionalInterface {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

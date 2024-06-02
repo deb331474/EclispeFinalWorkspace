@@ -1,0 +1,58 @@
+package com.dataTypes;
+
+public class ConstructorChaning {
+
+	private int id;
+	private String name;
+
+	public ConstructorChaning() {
+		this("Debasish", 999);
+		System.out.println("Default Employee Created");
+	}
+
+	public ConstructorChaning(int i) {
+
+		this("Debasish Pruseth", i);
+		System.out.println("Employee Created with Default name");
+	}
+
+	public ConstructorChaning(String s, int i) {
+
+		this.id = i;
+		this.name = s;
+		System.out.println("Employee Created");
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "ConstructorChaning [id=" + id + ", name=" + name + "]";
+	}
+
+	public static void main(String[] args) {
+
+		ConstructorChaning cc = new ConstructorChaning();
+		System.out.println(cc);
+		ConstructorChaning cc1 = new ConstructorChaning(199);
+		System.out.println(cc1);
+		ConstructorChaning cc2 = new ConstructorChaning("Rupesh", 80);
+		System.out.println(cc2);
+
+	}
+
+}

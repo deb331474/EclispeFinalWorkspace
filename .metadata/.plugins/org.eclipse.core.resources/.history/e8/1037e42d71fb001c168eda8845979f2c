@@ -1,0 +1,11 @@
+package com.debasish.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
+
+import com.debasish.entity.StudentManagement;
+
+@Component
+public interface studentRepository extends JpaRepository<StudentManagement , Long> {
+
+}

@@ -1,0 +1,19 @@
+1688462582853	Rename type 'CustomerRepository'
+1688462647574	Rename type 'BookRepository'
+1688462666992	Delete element
+1688462682739	Rename type 'Book'
+1688462770241	Rename type 'Customer'
+1688462797866	Rename type 'CustomerRepository'
+1688489603148	Rename package 'com.debasish.demo'
+1688494767632	Copy package
+1688494809658	Delete element
+1688494849944	Rename package 'in.debasish.controller'
+1688495045277	Rename package 'in.debasish.entity'
+1688495077676	Rename package 'in.debasish.repository'
+1688495100581	Rename package 'in.debasish.service'
+1688495353455	Delete element
+1688495525188	Rename package 'in.debasish.com.service'
+1688495547892	Rename package 'in.debasish.com.repository'
+1688495653714	Rename package 'in.debasish.com.entity'
+1688495973876	Delete element
+1688496347274	Delete element

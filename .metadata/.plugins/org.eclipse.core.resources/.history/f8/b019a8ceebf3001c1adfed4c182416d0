@@ -1,0 +1,52 @@
+package com.debasish.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.debasish.entity.StudentManagement;
+import com.debasish.repository.studentRepository;
+
+@Service
+
+public class ServiceImpl implements StudentService {
+
+	private studentRepository sRepository;
+
+	public ServiceImpl(studentRepository sRepository) {
+		super();
+		this.sRepository = sRepository;
+	}
+
+	@Override
+	public List<StudentManagement> getAllStudents() {
+
+		return sRepository.findAll();
+	}
+
+	@Override
+	public StudentManagement saveStudent(StudentManagement studentManagement) {
+
+		return sRepository.save(studentManagement);
+	}
+
+	@Override
+	public StudentManagement getStudentById(Long id) {
+
+		return sRepository.findById(id).get();
+	}
+
+	@Override
+	public StudentManagement updateStudent(StudentManagement studentManagement) {
+
+		return sRepository.save(studentManagement);
+	}
+
+	@Override
+	public void deleteStudent(Long id) {
+
+		sRepository.deleteById(id);
+	}
+
+}

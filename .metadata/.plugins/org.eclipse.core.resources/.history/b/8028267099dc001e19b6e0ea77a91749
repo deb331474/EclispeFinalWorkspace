@@ -1,0 +1,52 @@
+package testCases;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import PageObject.HomePage;
+import PageObject.LogInPage;
+import PageObject.PDPAddtoCartPage;
+import PageObject.ProductDisplayPage;
+import PageObject.SearchPage;
+import testBase.BaseClass;
+
+public class TC_PDP_005 extends BaseClass{
+	
+	@Test
+	public void addProductToCart() {
+		
+		try {
+			LogInPage lp = new LogInPage(driver);
+			logger.debug("application logs");
+			logger.info("Starting Test case 002");
+			HomePage hp = new HomePage(driver);
+			hp.clickMyAccount();
+			hp.Loginlink();
+			lp.setEmail("prusethdebasish@gmail.com");
+			lp.setPassword("debudon@211");
+			lp.clickLogin();
+
+			String myAccount = lp.getConfirmationMsg();
+			myAccount.trim();
+
+			Assert.assertEquals(myAccount, "My Account");
+			
+			SearchPage sp=new SearchPage(driver);
+			sp.clickonsearchEditField("iMac");
+			sp.clickonsearchBtn();
+			Assert.assertEquals("iMac", sp.getActualProductName());
+			ProductDisplayPage pdp=new ProductDisplayPage(driver);
+			pdp.clickonProductImageLink();
+			
+			PDPAddtoCartPage ppatc=new PDPAddtoCartPage(driver);
+			ppatc.updateQuantity("5");
+			ppatc.addProductToCart();
+			Assert.assertEquals("Success: You have added iMac to your shopping cart!",ppatc.getCartSuccMsg());
+	}
+		catch (Exception e) {
+          System.out.println(e.getMessage());
+		}
+		
+	}
+
+}

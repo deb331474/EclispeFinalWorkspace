@@ -1,0 +1,40 @@
+package com.debasish.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.debasish.entity.StudentManagement;
+import com.debasish.repository.studentRepository;
+
+@SpringBootApplication
+public class StudentManagementSystemApplication implements CommandLineRunner {
+
+	public static void main(String[] args) {
+		SpringApplication.run(StudentManagementSystemApplication.class, args);
+	}
+
+	@Autowired
+	private studentRepository sRepository;
+
+	@Override
+	public void run(String... args) throws Exception {
+
+		
+		  StudentManagement sM1 = new StudentManagement();
+		  sRepository.save(sM1);
+		 
+			/*
+			 * StudentManagement sM22 = new Student("Sanjay", "Jadhav", "sanjay@gmail.com");
+			 * studentRepository.save(student2);
+			 * 
+			 * 
+			 * Student student3 = new Student("tony", "stark", "tony@gmail.com");
+			 * studentRepository.save(student3);
+			 */
+		 
+
+	}
+
+}

@@ -1,0 +1,24 @@
+package com.learnJava.excelRead;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
+
+import org.apache.poi.ss.usermodel.*;
+
+import jxl.Workbook;
+
+public class ExcelReader {
+
+	public static void main(String[] args) {
+		
+		String filepath = "D:\\Automation\\Marriage.xlsx";
+		
+		try(InputStream inputStream = new FileInputStream(filepath);
+				Workbook workbook = new XSSFWorkbook(inputStream)){
+			
+		}
+		
+
+	}
+
+}

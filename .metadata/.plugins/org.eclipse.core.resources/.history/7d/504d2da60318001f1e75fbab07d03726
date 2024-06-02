@@ -1,0 +1,53 @@
+package testCases;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import PageObject.ApplePriceComparePage;
+import PageObject.GenericProductDisplayPage;
+import PageObject.HomePage;
+import PageObject.LogInPage;
+import PageObject.SearchPage;
+import testBase.BaseClass;
+
+public class TC_PDP_032 extends BaseClass{
+	
+	@Test
+	public void getDiscountAmountTest() {
+		
+		LogInPage lp = new LogInPage(driver);
+		logger.debug("application logs");
+		logger.info("Starting Test case 002");
+		HomePage hp = new HomePage(driver);
+		hp.clickMyAccount();
+		hp.Loginlink();
+		lp.setEmail("prusethdebasish@gmail.com");
+		lp.setPassword("debudon@211");
+		lp.clickLogin();
+
+		String myAccount = lp.getConfirmationMsg();
+		myAccount.trim();
+
+		Assert.assertEquals(myAccount, "My Account");
+		
+		SearchPage sp=new SearchPage(driver);
+		sp.clickonsearchEditField("Apple Cinema 30\"");
+		sp.clickonsearchBtn();
+		String expected=sp.getActualProductName().split("-")[1];
+		String proName=expected.trim();
+		Assert.assertEquals("Apple Cinema 30\"", proName);
+		
+
+		GenericProductDisplayPage gdp=new GenericProductDisplayPage(driver);
+		gdp.clickOnParticularProductImg("Apple Cinema 30\"");
+		ApplePriceComparePage app=new ApplePriceComparePage(driver);
+		String actPrice=app.getregularPrice();
+		String disPrice=app.getDiscountPrice();
+		
+		int amountDis=app.getDiscountAmount(disPrice, actPrice);
+		System.out.println(amountDis);
+		
+		Assert.assertEquals(amountDis, 22);
+	}
+
+}

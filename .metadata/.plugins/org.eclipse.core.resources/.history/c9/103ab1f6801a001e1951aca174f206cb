@@ -1,0 +1,9 @@
+package in.debasish.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import in.debasish.entity.Author;
+
+public interface AuthorRepository extends JpaRepository<Author, Long>{
+
+}

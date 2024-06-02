@@ -1,0 +1,11 @@
+package in.debasish.day2;
+
+public class StaticTextLocator {
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

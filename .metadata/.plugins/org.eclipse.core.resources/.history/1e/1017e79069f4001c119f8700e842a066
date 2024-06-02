@@ -1,0 +1,2 @@
+debug enable=  debug=true
+apllication.property = spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
